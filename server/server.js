@@ -41,9 +41,9 @@ const server = app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 });
 
-// app.get('/', (req, res) => {
-//     res.sendFile('index.html', {root: '../client/public'})
-// });
+app.get('/', (req, res) => {
+    res.sendFile('index.js', {root: '../client/src'})
+});
 
 
 // captcha 
