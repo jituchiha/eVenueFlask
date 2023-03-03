@@ -3,7 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from './LoginPage';
 import ForgotPassword from './ForgotPassword';
 import Register from './Register';
-import Login from './Login'
+import Home from './Home'
+import Navbar from './Navbar'
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <header className="App-header">
         <BrowserRouter>
             <Routes>
-              <Route path='/' element={<LoginPage/>}/>
+              <Route path='/' element={<Home/>}/>
+              <Route path='/Login' element= {<LoginPage/>} />
               <Route path='/ForgotPassword' element={<ForgotPassword/>}/>
               <Route path ='/Register' element={<Register/>}/>
           </Routes>
