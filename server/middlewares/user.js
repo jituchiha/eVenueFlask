@@ -1,3 +1,4 @@
+const User = require("../models/user");
 exports.userRegisterValidator =(req,res,next)=>{
 
     // first name is not empty
@@ -7,7 +8,7 @@ exports.userRegisterValidator =(req,res,next)=>{
     req.check("lastname", "last name is required").notEmpty();
     
     // username is not null
-	// req.check("username", "Username is required").notEmpty();
+	//req.check("username", "Username is required").notEmpty();
     
     // email not null
     req.check("email", "Email is required").notEmpty();
@@ -21,7 +22,7 @@ exports.userRegisterValidator =(req,res,next)=>{
     // check phone number has 10 digits
     req.check("phone")
         .isLength({min:10,max:10})
-        .withMessage("Phone number should be only 10 numbers")
+        .withMessage("Phone number should be 10 numbers")
 
     // password not null
     req.check("password", "Password is required").notEmpty();
@@ -43,7 +44,7 @@ exports.userRegisterValidator =(req,res,next)=>{
         const firstError=errors.map((err)=>err.msg)[0];
 
         return res.status(400).json({
-            error: firstError ,
+            error: firstError,
         })
     }
 

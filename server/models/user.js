@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const uuidv1 = require('uuidv1');
-const crypto = require('crypto');
+const mongoose=require("mongoose");
+const uuidv1=require("uuidv1");
+const crypto=require("crypto");
 
 const userSchema=new mongoose.Schema(
     {
@@ -24,6 +24,7 @@ const userSchema=new mongoose.Schema(
         },
         hashedPassword:{
             type: String,
+            required: true,
         },
         salt: String,
     },  
@@ -32,20 +33,16 @@ const userSchema=new mongoose.Schema(
     },
 );
 
-//virtual field
 
-userSchema.virtual("password").set(function (password) {
-    // temp variable _password
-    this._password = password;
+userSchema.virtual("password").set(function (password){
+    this._password=password;
 
-    this.salt = uuidv1();
+    this.salt=uuidv1();
 
-    //encryption 
-    this.hashedPassword = this.encryptPassword(password);
+    this.hashedPassword=this.encryptPassword(password);
 });
 
-//methods 
-userSchema.methods = {
+userSchema.methods={
     encryptPassword: function (password) {
         if(!password) return "";
 
@@ -59,10 +56,10 @@ userSchema.methods = {
             return "";
         }
     },
-     
+
     authenticate: function (plainText) {
         return this.encryptPassword(plainText) === this.hashedPassword;        
     },
 }
 
-module.exports = mongoose.model("User", userSchema);
+module.exports=mongoose.model("User",userSchema);
