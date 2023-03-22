@@ -1,16 +1,55 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import LoginPage from './LoginPage';
-import ForgotPassword from './ForgotPassword';
-import Register from './Register';
-import Home from './Home'
-import Navbar from './Navbar'
-import SearchPage from './SearchPage'
-import Profile from './Profile';
-import EditProfile from './EditProfile';
+import LoginPage from './components/LoginPage';
+import ForgotPassword from './components/ForgotPassword';
+import Register from './components/Register';
+import Home from './components/Home'
+import Navbar from './components/Navbar'
+import SearchPage from './components/SearchPage'
+import Profile from './components/Profile';
+import EditProfile from './components/EditProfile';
+import {useForm} from "react-hook-form";
+import { useState, useEffect } from 'react';
+import Form from 'react-bootstrap/Form';
+import axios from "axios";
+import UserProfile from './components/UserProfile';
 
 function App() {
+  // const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  // const { trial, setTrial} = useState('')
+  // const [serverResponse,setServerResponse]=useState('')
+  // const [data, setData] = useState(null)
+
+  // function submitForm() {
+  //   axios({
+  //     method: "GET",
+  //     url: '/profile',
+  //   })
+  //   .then((response) => {
+  //     const res = response.data
+  //     setData(({
+  //       profile_name: res.name,
+  //       about: res.about
+  //     }))
+  //   })
+  //   .catch((err) => {
+  //     if (err.response) {
+  //       console.log(err.response)
+  //     }
+  //   })
+  // }
+
   return (
+  //   <div className='App'>
+  //   <p>To get your profile details: </p><button onClick={submitForm}>Click me</button>
+  //       {data && <div>
+  //             <p>Profile name: {data.profile_name}</p>
+  //             <p>About me: {data.about}</p>
+  //           </div>
+  //       }
+  //   </div>
+
+
     <div className="App">
       <header className="App-header">
         <BrowserRouter>
@@ -20,12 +59,14 @@ function App() {
               <Route path='/ForgotPassword' element={<ForgotPassword/>}/>
               <Route path ='/Register' element={<Register/>}/>
               <Route path ='/Search' element={<SearchPage/>}/>
-              {/* <Route path = '/' element={<Profile/>} /> */}
-              {/* <Route path = '/Activites' element={<Activities />} />
-              <Route path = 'Sports' elemetn = {<SportsPage/>} /> */}
+              <Route path = '/Profile' element={<UserProfile/>} />
+              {/* <Route path = '/Activites' element={<Activities />} /> */}
+              {/* <Route path = 'Sports' elemetn = {<SportsPage/>} /> */}
           </Routes>
         </BrowserRouter>
       </header>
+
+
     </div>
   );
 }
